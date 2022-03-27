@@ -1,7 +1,7 @@
 # MetarMenu
 
 This is a [Hammerspoon](https://www.hammerspoon.org/)
-[Sppon](https://www.hammerspoon.org/Spoons/) for displaying METAR reports from
+[Spoon](https://www.hammerspoon.org/Spoons/) for displaying METAR reports from
 [AviationWeather.gov](https://aviationweather.gov/).
 
 <img alt="menubar" src="menubar.png">
@@ -13,6 +13,6 @@ This is a [Hammerspoon](https://www.hammerspoon.org/)
   - unzip
   - double click (Hammerspoon will install it to `~/.hammerspoon/Spoons/`)
   - Activate it in `init.lua`
-```
+```lua
 hs.loadSpoon('MetarMenu'):start({stationId = 'KARB'})
 ```
