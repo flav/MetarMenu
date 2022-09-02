@@ -3,7 +3,7 @@
 --- Brief METAR information in menubar.
 ---
 --- ```
----   hs.loadSpoon('MetarMenu'):start({stationId = 'KARB'})
+---   hs.loadSpoon('MetarMenu'):start({stationIds = {'KARB', 'KYIP', 'KDTW'}})
 --- ```
 ---
 --- Download: [https://github.com/flav/MetarMenu/raw/main/Spoon/MetarMenu.spoon.zip](https://github.com/flav/MetarMenu/raw/main/Spoon/MetarMenu.spoon.zip)
@@ -17,7 +17,8 @@ obj.author = "Flavio daCosta <flav@binaryservice.com>"
 obj.homepage = "https://github.com/flav/MetarMenu"
 obj.license = "MIT - https://opensource.org/licenses/MIT"
 
-obj.stationId = 'KARB'
+obj.stationId = nil
+obj.stationIds = {'KARB', 'KYIP', 'KDTW'}
 
 function obj:init()
     self.menubar = hs.menubar.new(false)
@@ -30,6 +31,7 @@ end
 --- Parameters:
 ---  * config - Configuration for fetching METAR
 ---     * stationId - Station identifier
+---     * stationIds - List of station identifiers reporting the first successful
 ---
 --- Returns:
 ---  * The MetarMenu object
@@ -40,6 +42,10 @@ end
 function obj:start(config)
     if config ~= nil and type(config) == 'table' then
         obj.stationId = config.stationId or nil
+
+        if config.stationIds ~= nil and type(config.stationIds) == 'table' then
+            obj.stationIds = config.stationIds
+        end
     end
 
     obj.menubar:returnToMenuBar()
@@ -72,8 +78,17 @@ function obj:stop()
 end
 
 function obj:refresh()
+    -- IF single stationId and we get a result - then done
     if obj.stationId then
-        obj:getMetarXml(obj.stationId)
+        if obj:getMetarXml(obj.stationId) then
+            return
+        end
+    end
+    -- Otherwise, loop thorugh stations and stop when we get one
+    for i = 1, #obj.stationIds do
+        if obj:getMetarXml(obj.stationIds[i]) then
+            return
+        end
     end
 
     -- local metarReport = {
@@ -177,14 +192,19 @@ function obj:getMetarXml(station)
     }
     local url = baseUrl .. "?" .. obj:buildQueryString(queryParams)
 
-    hs.http.asyncGet(url, nil, function(code, body, table)
-        if code ~= 200 then
-            print('-- Could not get weather. Response code: ' .. code)
+    local code, body, table = hs.http.get(url, nil)
+    if code ~= 200 then
+        print('-- Could not get weather. Response code: ' .. code)
+    else
+        local metarReport = obj:metarParser(body)
+        if metarReport == nil then
+            obj:updateTitle("No data")
+            return false
         else
-            local metarReport = obj:metarParser(body)
-            obj:updateMenu(metarReport);
+            obj:updateMenu(metarReport)
+            return true
         end
-    end)
+    end
 end
 
 function obj:metarParser(metarXml)
@@ -192,6 +212,9 @@ function obj:metarParser(metarXml)
     -- https://learnxinyminutes.com/docs/lua/
     -- Patterns: https://www.lua.org/manual/5.1/manual.html#5.4.1
     metarXml = metarXml:match "<METAR>(.*)</METAR>"
+    if metarXml == nil then
+        return
+    end
 
     local metarReport = {}
     for entity, value in string.gmatch(metarXml, "<([^/<]+)>([^<]+)") do

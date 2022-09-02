@@ -14,5 +14,9 @@ This is a [Hammerspoon](https://www.hammerspoon.org/)
   - double click (Hammerspoon will install it to `~/.hammerspoon/Spoons/`)
   - Activate it in `init.lua`
 ```lua
+-- One station
 hs.loadSpoon('MetarMenu'):start({stationId = 'KARB'})
+
+-- Stations to try to use first found
+hs.loadSpoon('MetarMenu'):start({stationIds = {'KARB', 'KYIP', 'KDTW'}})
 ```
