@@ -21,7 +21,7 @@ obj.stationId = nil
 obj.stationIds = {'KARB', 'KYIP', 'KDTW'}
 
 function obj:init()
-    self.menubar = hs.menubar.new(false)
+    self.menubar = hs.menubar.new(false, 'metarMenu')
 end
 
 --- MetarMenu:start(stationId) -> MetarMenu
