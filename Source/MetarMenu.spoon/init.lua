@@ -12,7 +12,7 @@ obj.__index = obj
 
 -- Metadata
 obj.name = "MetarMenu"
-obj.version = "1.0"
+obj.version = "1.1"
 obj.author = "Flavio daCosta <flav@binaryservice.com>"
 obj.homepage = "https://github.com/flav/MetarMenu"
 obj.license = "MIT - https://opensource.org/licenses/MIT"

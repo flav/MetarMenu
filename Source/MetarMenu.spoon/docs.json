@@ -23,63 +23,7 @@
     "Constructor" : [
 
     ],
-    "items" : [
-      {
-        "doc" : "Starts MetarMenu\n\nParameters:\n * config - Configuration for fetching METAR\n    * stationId - Station identifier\n    * stationIds - List of station identifiers reporting the first successful\n\nReturns:\n * The MetarMenu object\n\nNotes:\n * Will show METAR in the menu, and poll for updates. Requires a valid METAR",
-        "stripped_doc" : [
-          "Starts MetarMenu",
-          ""
-        ],
-        "name" : "start",
-        "parameters" : [
-          " * config - Configuration for fetching METAR",
-          "    * stationId - Station identifier",
-          "    * stationIds - List of station identifiers reporting the first successful",
-          ""
-        ],
-        "notes" : [
-          " * Will show METAR in the menu, and poll for updates. Requires a valid METAR"
-        ],
-        "signature" : "MetarMenu:start(stationId) -> MetarMenu",
-        "type" : "Method",
-        "returns" : [
-          " * The MetarMenu object",
-          ""
-        ],
-        "def" : "MetarMenu:start(stationId) -> MetarMenu",
-        "desc" : "Starts MetarMenu"
-      },
-      {
-        "doc" : "Stops MetarMenu\n\nParameters:\n * None\n\nReturns:\n * The MetarMenu object\n\nNotes:\n * This will remove menu item and stop polling for updates",
-        "stripped_doc" : [
-          "Stops MetarMenu",
-          ""
-        ],
-        "name" : "stop",
-        "parameters" : [
-          " * None",
-          ""
-        ],
-        "notes" : [
-          " * This will remove menu item and stop polling for updates"
-        ],
-        "signature" : "MetarMenu:stop() -> MetarMenu",
-        "type" : "Method",
-        "returns" : [
-          " * The MetarMenu object",
-          ""
-        ],
-        "def" : "MetarMenu:stop() -> MetarMenu",
-        "desc" : "Stops MetarMenu"
-      }
-    ],
     "doc" : "Brief METAR information in menubar.\n\n```\n  hs.loadSpoon('MetarMenu'):start({stationIds = {'KARB', 'KYIP', 'KDTW'}})\n```\n\nDownload: [https:\/\/github.com\/flav\/MetarMenu\/raw\/main\/Spoon\/MetarMenu.spoon.zip](https:\/\/github.com\/flav\/MetarMenu\/raw\/main\/Spoon\/MetarMenu.spoon.zip)",
-    "Command" : [
-
-    ],
-    "Field" : [
-
-    ],
     "Method" : [
       {
         "doc" : "Starts MetarMenu\n\nParameters:\n * config - Configuration for fetching METAR\n    * stationId - Station identifier\n    * stationIds - List of station identifiers reporting the first successful\n\nReturns:\n * The MetarMenu object\n\nNotes:\n * Will show METAR in the menu, and poll for updates. Requires a valid METAR",
@@ -87,13 +31,13 @@
           "Starts MetarMenu",
           ""
         ],
-        "name" : "start",
         "parameters" : [
           " * config - Configuration for fetching METAR",
           "    * stationId - Station identifier",
           "    * stationIds - List of station identifiers reporting the first successful",
           ""
         ],
+        "desc" : "Starts MetarMenu",
         "notes" : [
           " * Will show METAR in the menu, and poll for updates. Requires a valid METAR"
         ],
@@ -103,8 +47,8 @@
           " * The MetarMenu object",
           ""
         ],
-        "def" : "MetarMenu:start(stationId) -> MetarMenu",
-        "desc" : "Starts MetarMenu"
+        "name" : "start",
+        "def" : "MetarMenu:start(stationId) -> MetarMenu"
       },
       {
         "doc" : "Stops MetarMenu\n\nParameters:\n * None\n\nReturns:\n * The MetarMenu object\n\nNotes:\n * This will remove menu item and stop polling for updates",
@@ -112,11 +56,11 @@
           "Stops MetarMenu",
           ""
         ],
-        "name" : "stop",
         "parameters" : [
           " * None",
           ""
         ],
+        "desc" : "Stops MetarMenu",
         "notes" : [
           " * This will remove menu item and stop polling for updates"
         ],
@@ -126,9 +70,65 @@
           " * The MetarMenu object",
           ""
         ],
-        "def" : "MetarMenu:stop() -> MetarMenu",
-        "desc" : "Stops MetarMenu"
+        "name" : "stop",
+        "def" : "MetarMenu:stop() -> MetarMenu"
       }
+    ],
+    "Command" : [
+
+    ],
+    "items" : [
+      {
+        "doc" : "Starts MetarMenu\n\nParameters:\n * config - Configuration for fetching METAR\n    * stationId - Station identifier\n    * stationIds - List of station identifiers reporting the first successful\n\nReturns:\n * The MetarMenu object\n\nNotes:\n * Will show METAR in the menu, and poll for updates. Requires a valid METAR",
+        "stripped_doc" : [
+          "Starts MetarMenu",
+          ""
+        ],
+        "parameters" : [
+          " * config - Configuration for fetching METAR",
+          "    * stationId - Station identifier",
+          "    * stationIds - List of station identifiers reporting the first successful",
+          ""
+        ],
+        "desc" : "Starts MetarMenu",
+        "notes" : [
+          " * Will show METAR in the menu, and poll for updates. Requires a valid METAR"
+        ],
+        "signature" : "MetarMenu:start(stationId) -> MetarMenu",
+        "type" : "Method",
+        "returns" : [
+          " * The MetarMenu object",
+          ""
+        ],
+        "name" : "start",
+        "def" : "MetarMenu:start(stationId) -> MetarMenu"
+      },
+      {
+        "doc" : "Stops MetarMenu\n\nParameters:\n * None\n\nReturns:\n * The MetarMenu object\n\nNotes:\n * This will remove menu item and stop polling for updates",
+        "stripped_doc" : [
+          "Stops MetarMenu",
+          ""
+        ],
+        "parameters" : [
+          " * None",
+          ""
+        ],
+        "desc" : "Stops MetarMenu",
+        "notes" : [
+          " * This will remove menu item and stop polling for updates"
+        ],
+        "signature" : "MetarMenu:stop() -> MetarMenu",
+        "type" : "Method",
+        "returns" : [
+          " * The MetarMenu object",
+          ""
+        ],
+        "name" : "stop",
+        "def" : "MetarMenu:stop() -> MetarMenu"
+      }
+    ],
+    "Field" : [
+
     ],
     "name" : "MetarMenu"
   }
