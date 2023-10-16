@@ -124,11 +124,12 @@ function obj:updateMenu(metarReport)
         MVFR = "#0000FF"
     }
     if colors[metarReport.flight_category] then
-        obj:updateTitle(hs.styledtext.new(title, {
+        title = hs.styledtext.new('◉ ', {
             color = {
                 hex = colors[metarReport.flight_category]
             }
-        }))
+        }) .. hs.styledtext.new(title)
+        obj:updateTitle(title)
     else
         -- no color - use default for light/dark
         obj:updateTitle(title)
