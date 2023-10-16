@@ -12,7 +12,7 @@ obj.__index = obj
 
 -- Metadata
 obj.name = "MetarMenu"
-obj.version = "1.1"
+obj.version = "1.2"
 obj.author = "Flavio daCosta <flav@binaryservice.com>"
 obj.homepage = "https://github.com/flav/MetarMenu"
 obj.license = "MIT - https://opensource.org/licenses/MIT"
@@ -186,7 +186,6 @@ function obj:getMetarXml(station)
     local baseUrl = "https://aviationweather.gov/cgi-bin/data/metar.php"
     local queryParams = {
         format = "xml",
-        hours = "2.25",
         ids = station
     }
     local url = baseUrl .. "?" .. obj:buildQueryString(queryParams)
