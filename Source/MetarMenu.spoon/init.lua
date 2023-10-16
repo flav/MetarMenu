@@ -182,14 +182,12 @@ function obj:getMetarXml(station)
     end
     -- https://aviationweather.gov/dataserver
     -- https://aviationweather.gov/metar/help?page=text
-    local baseUrl = "https://www.aviationweather.gov/adds/dataserver_current/httpparam"
+    -- https://aviationweather.gov/data/api/help/
+    local baseUrl = "https://aviationweather.gov/cgi-bin/data/metar.php"
     local queryParams = {
-        datasource = "metars",
-        requestType = "retrieve",
         format = "xml",
-        mostRecentForEachStation = "constraint",
-        hoursBeforeNow = "2.25",
-        stationString = station
+        hours = "2.25",
+        ids = station
     }
     local url = baseUrl .. "?" .. obj:buildQueryString(queryParams)
 
